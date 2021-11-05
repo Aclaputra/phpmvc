@@ -1,7 +1,7 @@
 <?php
 
 class App {
-    protected $controller = 'Home';
+    protected $controller = 'home';
     protected $method = 'index';
     protected $params = [];
 
@@ -10,12 +10,11 @@ class App {
         
         if(file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
-            // unset($url[0]);
+            unset($url[0]);
             var_dump($url);
-            echo 'exists';
-
+            echo 'file exists';
         } else {
-            echo 'not exists';
+            echo 'file not exists';
         }
     }
 
