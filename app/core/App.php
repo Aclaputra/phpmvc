@@ -6,19 +6,43 @@ class App {
     protected $params = [];
 
     public function __construct() {
+        // fungsi $this=>parseURL() utk mengambil value pada url
         $url = $this->parseURL();
         
+        /** check if file pada path dibawah + url index ke 0 .php- 
+         * ada/exist pada folder app/controllers/ -> jika ada maka-
+         * unset url index ke-0
+         **/ 
         if(file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
+            /** unset() destroys the specified variables.
+             * link documentation resmi: 
+             * https://www.php.net/manual/en/function.unset
+            */
             unset($url[0]);
-            var_dump($url);
-            echo 'file exists';
+            // var_dump($url);
+            echo 'file in app/controllers/ exists. ';
         } else {
-            echo 'file not exists';
+            echo 'file app/controllers/ not exists. ';
         }
 
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
+
+        // method 
+        if(isset($url[1])) {
+            if(method_exists($this->controller, $url[1])) {
+                // method adalah variable di atas yg berisikan variable value
+                $this->method = $url[1];
+                unset($url[1]);
+            }
+        }
+
+        // params
+        if(!empty($url)) {
+            echo 'Var_dump => '; 
+            var_dump($url);
+        }
     }
 
     public function parseURL() {
