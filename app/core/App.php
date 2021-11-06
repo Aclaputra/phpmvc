@@ -16,6 +16,9 @@ class App {
         } else {
             echo 'file not exists';
         }
+
+        require_once '../app/controllers/' . $this->controller . '.php';
+        $this->controller = new $this->controller;
     }
 
     public function parseURL() {
