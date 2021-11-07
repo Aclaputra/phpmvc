@@ -1,15 +1,27 @@
-<?php
+とても面白かった動画で、今度またジェロムさんとコラボして欲しい<?php
 
 class App {
+    /** protected
+     * the property or method can be accessed within the class and-
+     * by classes derived from that class
+     * link documentation resmi:
+     * https://www.w3schools.com/php/php_oop_access_modifiers.asp
+     */
     protected $controller = 'home';
     protected $method = 'index';
     protected $params = [];
 
     public function __construct() {
-        // fungsi $this=>parseURL() utk mengambil value pada url
+        /** $this=>parseURL()
+         * 
+         * fungsi utk mengambil value pada url website
+         * value berisi index 0 sampai seterusnya sesuai banyak url
+         * yg memisahkan tiap index adalah /
+        **/
         $url = $this->parseURL();
         
-        /** check if file pada path dibawah + url index ke 0 .php- 
+        /** 
+         * check if file pada path dibawah + url index ke 0 .php- 
          * ada/exist pada folder app/controllers/ -> jika ada maka-
          * unset url index ke-0
          **/ 
