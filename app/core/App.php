@@ -17,20 +17,20 @@ class App {
          * fungsi utk mengambil value pada url website
          * value berisi index 0 sampai seterusnya sesuai banyak url
          * yg memisahkan tiap index adalah /
-        **/
+         */
         $url = $this->parseURL();
         
         /** 
          * check if file pada path dibawah + url index ke 0 .php- 
          * ada/exist pada folder app/controllers/ -> jika ada maka-
          * unset url index ke-0
-         **/ 
+         */ 
         if(file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             /** unset() destroys the specified variables.
              * link documentation resmi: 
              * https://www.php.net/manual/en/function.unset
-            */
+             */
             unset($url[0]);
             // var_dump($url);
             echo 'file in app/controllers/ exists. ';
@@ -41,7 +41,8 @@ class App {
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
 
-        // method 
+        // method
+
         if(isset($url[1])) {
             if(method_exists($this->controller, $url[1])) {
                 // method adalah variable di atas yg berisikan variable value
