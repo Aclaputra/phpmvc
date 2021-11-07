@@ -20,14 +20,15 @@ class App {
          */
         $url = $this->parseURL();
         
-        /** 
+        /** file_exists
          * check if file pada path dibawah + url index ke 0 .php- 
          * ada/exist pada folder app/controllers/ -> jika ada maka-
          * unset url index ke-0
          */ 
         if(file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
-            /** unset() destroys the specified variables.
+            /** unset() 
+             * destroys the specified variables.
              * link documentation resmi: 
              * https://www.php.net/manual/en/function.unset
              */
@@ -42,7 +43,11 @@ class App {
         $this->controller = new $this->controller;
 
         // method
-
+        /** isset
+         * Determine if a variable is declared and is different than null
+         * Determine if a variable is considered set, this means if a variable- 
+         * is declared and is different than null.
+         */
         if(isset($url[1])) {
             if(method_exists($this->controller, $url[1])) {
                 // method adalah variable di atas yg berisikan variable value
