@@ -57,7 +57,7 @@ class App {
         }
 
         // params
-        if(!empty($url)) {
+        if(isset($url)) {
             echo 'Var_dump => '; 
             var_dump($url);
         }
