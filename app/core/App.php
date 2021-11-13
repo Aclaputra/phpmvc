@@ -12,6 +12,15 @@ class App {
     protected $params = [];
 
     public function __construct() {
+        // make a console.log in php
+        function console_log($output, $with_script_tags = true) {
+            $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
+        ');';
+            if ($with_script_tags) {
+                $js_code = '<script>' . $js_code . '</script>';
+            }
+            echo $js_code;
+        }
         /** $this=>parseURL()
          * 
          * fungsi utk mengambil value pada url website
@@ -39,9 +48,11 @@ class App {
              */
             unset($url[0]);
             // var_dump($url);
-            echo nl2br("file in ".$ctrlPath." exists. \n");
+            
+            console_log("file in ".$ctrlPath." exists.");
+            // echo nl2br("file in ".$ctrlPath." exists. \n");
         } else {
-            echo nl2br("file ".$ctrlPath." not exists. \n");
+            console_log("file ".$ctrlPath." not exists.");
         }
 
         require_once $ctrlPath . $this->controller . '.php';
