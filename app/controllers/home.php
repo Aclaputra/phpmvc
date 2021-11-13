@@ -1,7 +1,8 @@
 <?php
 
-class Home {
+class Home extends Controller {
     public function index(){
-        echo 'home/index';
+        // panggil function view($view, $data = []) di core/Controller.php 
+        $this->view('home/index');
     }
 }
