@@ -19,6 +19,7 @@ class App {
          * yg memisahkan tiap index adalah /
          */
         $url = $this->parseURL();
+        //  fixed: Trying to access array offset on value of type null
         if($url == NULL) {
             $url = [$this->controller];
         }
