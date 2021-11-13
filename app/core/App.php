@@ -19,13 +19,17 @@ class App {
          * yg memisahkan tiap index adalah /
          */
         $url = $this->parseURL();
-        
+        if($url == NULL) {
+            $url = [$this->controller];
+        }
         /** file_exists
          * check if file pada path dibawah + url index ke 0 .php- 
          * ada/exist pada folder app/controllers/ -> jika ada maka-
          * unset url index ke-0
          */ 
-        if(file_exists('../app/controllers/' . $url[0] . '.php')) {
+        $ctrlPath = '../app/controllers/';
+        $FExist = file_exists($ctrlPath . $url[0] . '.php');
+        if($FExist) {
             $this->controller = $url[0];
             /** unset() 
              * destroys the specified variables.
@@ -34,12 +38,12 @@ class App {
              */
             unset($url[0]);
             // var_dump($url);
-            echo 'file in app/controllers/ exists. ';
+            echo nl2br("file in ".$ctrlPath." exists. \n");
         } else {
-            echo 'file app/controllers/ not exists. ';
+            echo nl2br("file ".$ctrlPath." not exists. \n");
         }
 
-        require_once '../app/controllers/' . $this->controller . '.php';
+        require_once $ctrlPath . $this->controller . '.php';
         $this->controller = new $this->controller;
 
         // method
@@ -57,10 +61,17 @@ class App {
         }
 
         // params
-        if(isset($url)) {
-            echo 'Var_dump => '; 
-            var_dump($url);
+        if(!empty($url)) {
+            $this->params = array_values($url);
+            // echo 'Var_dump => '; 
+            // var_dump($url);
         }
+
+        /**  jalankan controller & method, serta kirimkan params jika ada
+         * call_user_func_array(function, param_arr)
+         * https://www.php.net/manual/en/function.call-user-func-array.php
+         */
+        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
     public function parseURL() {
