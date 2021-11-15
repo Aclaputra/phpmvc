@@ -6,11 +6,11 @@
                 dengan menggunakan foreach 
             -->
             <?php foreach($data['mhs'] as $mhs) : ?>
-                <ul>
-                    <li><?= $mhs['nama']; ?></li>
-                    <li><?= $mhs['nim']; ?></li>
-                    <li><?= $mhs['email']; ?></li>
-                    <li><?= $mhs['jurusan']; ?></li>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <?= $mhs['nama']; ?>
+                        <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge rounded-pill bg-primary">detail</a>
+                    </li>
                 </ul>
             <?php endforeach; ?>
         </div>
