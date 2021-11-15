@@ -95,4 +95,10 @@ class Database {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
+    // utk menghitung ada berapa baris/row
+    public function myRowCount() {
+        // row count yg dibawah punya PDO alias official
+        $this->stmt->rowCount();
+        // var_dump($this->stmt->rowCount());
+    }
 }
