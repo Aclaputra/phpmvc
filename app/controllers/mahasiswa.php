@@ -30,4 +30,15 @@ class Mahasiswa extends Controller{
         $this->view('mahasiswa/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function add() {
+        /** panggil function addDataMahasiswa masukkan data dri $_POST & jika > 0 atau exist
+         * heading balik ke mahasiswa home & exit;
+         */
+        $this->model('Mahasiswa_model')->addDataMahasiswa($_POST);
+        if($_POST > 0) {
+            header('Location: '. BASEURL .'/mahasiswa');
+            exit;
+        }
+    }
 }
