@@ -40,4 +40,21 @@ class Mahasiswa_model {
         // isi cuma satu pakai function single() dripada resultSet() utk all
         return $this->db->single();
     }
+
+    public function addDataMahasiswa($data) {
+        $query = "INSERT INTO mahasiswa
+                  VALUES
+                  ('', :nama, :nim, :email, :jurusan)";
+        // panggil function query masukkan variabel $query ke argumen
+        $this->db->query($query);
+        // panggil function bind 
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nim', $data['nim']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('jurusan', $data['jurusan']);
+
+        $this->db->execute();
+
+        return $this->db->myRowCount();
+    }
 }
