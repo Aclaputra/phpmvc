@@ -2,5 +2,5 @@
 # phpmvc
 Basic PHP Native MVC (Model View Controller), making MVC Framework
 
-<!-- Membuat Aplikasi MVC dengan PHP #8 Database Wrapper
-https://www.youtube.com/watch?v=44D7B71_WtY&list=PLFIM0718LjIVEh_d-h5wAjsdv2W4SAtkx&index=8 (00:01/15:03) -->
+<!-- Membuat Aplikasi MVC dengan PHP #9 Insert Data
+https://www.youtube.com/watch?v=a0hUeS800OE&list=PLFIM0718LjIVEh_d-h5wAjsdv2W4SAtkx&index=9 (00:01/15:03) -->
