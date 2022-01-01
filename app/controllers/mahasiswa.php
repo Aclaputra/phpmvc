@@ -46,4 +46,19 @@ class Mahasiswa extends Controller{
             exit;
         }
     }
+    public function delete($id) {
+        /** panggil function addDataMahasiswa masukkan data dri $_POST & jika > 0 atau exist
+         * heading balik ke mahasiswa home & exit;
+         */
+        $this->model('Mahasiswa_model')->deleteDataMahasiswa($id);
+        if($id > 0) {
+            Flasher::setFlash('Berhasil', 'dihapus', 'success');
+            header('Location: '. BASEURL .'/mahasiswa');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: '. BASEURL .'/mahasiswa');
+            exit;
+        }
+    }
 }
