@@ -49,10 +49,10 @@ class App {
             unset($url[0]);
             // var_dump($url);
             
-            console_log("file in ".$ctrlPath." exists.");
+            // console_log("file in ".$ctrlPath." exists.");
             // echo nl2br("file in ".$ctrlPath." exists. \n");
         } else {
-            console_log("file ".$ctrlPath." not exists.");
+            // console_log("file ".$ctrlPath." not exists.");
         }
 
         require_once $ctrlPath . $this->controller . '.php';
